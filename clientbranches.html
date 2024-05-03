@@ -1,0 +1,451 @@
+<!doctype html>
+
+<!-- Przy stronach div nie ustawiac overflow: hidden tekst wtedy miga przy najechaniu na rog -->
+<html>
+
+<!-- Mirrored from mpcthemes.net/flipbook/html/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Jan 2018 15:07:19 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<title>Responsive Flip Book powered by jQuery</title>
+	<!-- Meta -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="keywords" content="flip book, book, page, flip, effect, jquery, html5, magazine, pageflip, flipbook, pagefliper, newspaper, ipad, iphone, android, ios, mpc, massivePixelCreation">
+	<meta name="description" content="HTML Flip Book is a jQuery powered magazine components which lets you easily create: books, magazines and newspapers.">
+	
+	<!-- Stylesheet -->
+	<link rel="stylesheet" type="text/css" href="http://mpcthemes.net/flipbook/html/css/style.css">
+	<link rel="stylesheet" type="text/css" href="http://mpcthemes.net/flipbook/html/css/page-styles.css">
+	<!-- styles switcher -->
+	<link rel="stylesheet" type="text/css" href="http://mpcthemes.net/flipbook/html/styles-switcher/css/ss-styles.css">
+	<link rel="stylesheet" type="text/css" href="http://mpcthemes.net/flipbook/html/styles-switcher/css/colorpicker.css">
+	
+	
+	<style type="text/css">
+	
+		#flipbook-1 {
+			margin-top: 20px;
+			margin-bottom: 0px;
+			margin-left: 0px;
+			margin-right: 0px;
+			
+			width: 712px; 
+			height: 510px; 
+		}
+		
+		#flipbook-1 div.fb-page div.page-content {
+			margin: 10px 0px; 
+		}
+		
+		#flipbook-1 .turn-page {
+			width: 356px;		
+			height: 510px;
+			background: #ECECEC;
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
+							box-shadow: inset -1px 0px 1px 0px #BFBFBF; 
+			
+		}
+		
+		#flipbook-1 .last .turn-page,
+		#flipbook-1 .even .turn-page {
+			border-radius: 0px;
+			border-top-left-radius: 10px;
+			border-bottom-left-radius: 10px;	
+							box-shadow: inset 1px 0px 1px 0px #BFBFBF;
+		}
+		
+		#flipbook-1 .fpage .turn-page {
+			border-radius: 0px;
+			border-top-left-radius: 10px;
+			border-bottom-left-radius: 10px;
+							box-shadow: inset 1px 0px 1px 0px  #BFBFBF;
+		}
+		
+		#flipbook-1 .last .fpage .turn-page,
+		#flipbook-1 .even .fpage .turn-page {
+			border-radius: 0px;
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
+							box-shadow: inset -1px 0px 1px 0px #BFBFBF;
+		}
+		
+		#flipbook-container-1 div.page-content div.container img.bg-img {
+			margin-top: 0px;
+			margin-left: 0px;
+		}
+		
+		#flipbook-container-1 div.page-content.first div.container img.bg-img {
+			margin-top: 10px;
+		}
+	
+		#flipbook-container-1 div.page-content.even div.container img.bg-img {
+			left: 0px;
+		}
+		
+		#flipbook-container-1 div.page-content.last div.container img.bg-img {
+			left: 10px;
+			margin-top: 10px;
+		}
+	
+		#flipbook-1 div.page-transition.last div.page-content,
+		#flipbook-1 div.page-transition.even div.page-content,
+		#flipbook-1 div.turn-page-wrapper.odd div.page-content {
+			margin-left: 0px;
+			margin-right: 10px; 
+		}
+	
+		#flipbook-1 div.turn-page-wrapper.first div.page-content {
+			margin-right: 10px;
+			margin-left: 0px; 
+		}
+	
+		#flipbook-1 div.page-transition.first div.page-content,
+		#flipbook-1 div.page-transition.odd div.page-content,
+		#flipbook-1 div.turn-page-wrapper.even div.page-content,
+		#flipbook-1 div.turn-page-wrapper.last div.page-content {
+			margin-left: 10px;
+		}
+		
+		#flipbook-1 div.fb-page-edge-shadow-left,
+		#flipbook-1 div.fb-page-edge-shadow-right,
+		#flipbook-1 div.fb-inside-shadow-left,
+		#flipbook-1 div.fb-inside-shadow-right {
+			top: 10px;
+			height: 490px;
+		}
+		
+		#flipbook-1 div.fb-page-edge-shadow-left {
+			left: 10px;
+		}
+		
+		#flipbook-1 div.fb-page-edge-shadow-right {
+			right: 10px;
+		}
+		
+		/* Zoom */
+					
+		#flipbook-container-1 div.zoomed-shadow {
+			opacity: 0.2;
+		}
+		
+		#flipbook-container-1 div.zoomed {
+			border: 10px solid #ECECEC;
+			border-radius: 10px;
+							box-shadow: 0px 0px 0px 1px #D0D0D0;	
+				
+		}	
+		
+		/* Show All Pages */
+		#flipbook-container-1 div.show-all div.show-all-thumb {
+			margin-bottom: 12px;
+			height: 180px;
+			width: 125px;
+			border: 1px solid #878787;
+		}
+		
+		#flipbook-container-1 div.show-all div.show-all-thumb.odd {
+			margin-right: 10px;
+			border-left: none;
+		}
+		
+		#flipbook-container-1 div.show-all div.show-all-thumb.odd img.bg-img {
+			padding-left: 250px;
+		}
+		
+		#flipbook-container-1 div.show-all div.show-all-thumb.odd.first img.bg-img {
+			padding-left: 0px;
+		}
+		
+		#flipbook-container-1 div.show-all div.show-all-thumb.even {
+			border-right: none;
+		}
+		
+		#flipbook-container-1 div.show-all div.show-all-thumb.last-thumb {
+			margin-right: 0px;
+		}
+		
+		#flipbook-container-1 div.show-all {
+			background: #F6F6F6;
+			border-radius: 10px;
+							border: 1px solid #D6D6D6;
+		}
+		
+		#flipbook-container-1 div.show-all div.content {
+			top: 10px;
+			left: 10px;
+		}
+	
+		
+		/* Inner Pages Shadows */
+				
+					#flipbook-1 div.fb-page-edge-shadow-left,
+			#flipbook-1 div.fb-page-edge-shadow-right {
+				display: none;
+			}
+				
+	</style>
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="http://mpcthemes.net/flipbook/html/js/swfobject2.js"></script>
+	<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="http://mpcthemes.net/flipbook/html/js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="http://mpcthemes.net/flipbook/html/js/turn.js"></script>
+	<script type="text/javascript" src="http://mpcthemes.net/flipbook/html/js/flipbook.js"></script>
+	<script type="text/javascript" src="http://mpcthemes.net/flipbook/html/js/jquery.doubletap.js"></script>
+	<script type="text/javascript" src="http://mpcthemes.net/flipbook/html/js/jquery.color.js"></script>
+	<script type="text/javascript" src="http://mpcthemes.net/flipbook/html/js/page-js.js"></script>
+	<!-- styles switcher -->
+	<script type="text/javascript" src="http://mpcthemes.net/flipbook/html/styles-switcher/js/ss-jquery.js"></script>
+	<script type="text/javascript" src="http://mpcthemes.net/flipbook/html/styles-switcher/js/customSelect.js"></script>
+	<script type="text/javascript" src="http://mpcthemes.net/flipbook/html/styles-switcher/js/easing-jquery.js"></script>
+	<script type="text/javascript" src="http://mpcthemes.net/flipbook/html/styles-switcher/js/colorpicker.js"></script>
+	
+</head>
+<body>	`
+
+<div id="flipbook-container-1" class="flipbook-container">
+	
+	<!-- Flip book -->
+	<div id="flipbook-1" class="flipbook">
+		<!-- Start Flip Book Pages -->
+		
+		<!-- Cover -->
+		<div class="fb-page">
+			<div class="page-content">
+				<div class="container">
+					<img src="cover.jpg" class="bg-img" />
+					<img src="cover.jpg" class="bg-img zoom-large"/>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Pages 2 & 3 Table of Content -->
+		<div class="fb-page double">
+			<div class="page-content">
+				<div class="container">
+					<div style="padding-top: 5%;" class="preview-content toc right">
+						<h2 class="enlarge">Table of content</h2>
+						<p class="enlarge">Use HTML & build you own table of content</p>
+						<ul class="toc enlarge">
+							<li><a href="#3"></a><span class="number">03</span><span class="text">Table of content</span></a></li>
+							<li><a href="#5"><span class="number">04</span><span class="text">Domain Registration & hosting</span></a></li>
+							<li><a href="#7"><span class="number">06</span><span class="text">Website designing</span></a></li>
+							<li><a href="#8"><span class="number">08</span><span class="text">Android application development</span></a></li>
+							<li><a href="#11"><span class="number">10</span><span class="text">Responsive websites</span></a></li>
+							<li><a href="#13"><span class="number">12</span><span class="text">Pricing</span></a></li>
+							<li><a href="#15"><span class="number">14</span><span class="text">IOT Projects</span></a></li>
+						</ul>
+					</div>
+					<img src="02-03.jpg" class="bg-img"/>
+					<img src="02-03.jpg" class="bg-img zoom-large"/>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Pages 4 & 5 Content Presentation -->
+		<div class="fb-page double">
+			<div class="page-content">
+				<div class="container">
+					<div class="preview-content presentation left">
+						<h3 class="enlarge">Domain Registration and Hosting</h2>
+						<p class="enlarge">We are providing services for Domain registation and Web site development and hosting with very less cost. <a href="#7">we support all of them!</a> ).</p>
+						<p class="enlarge">We are creating static and dynamic website for all kind of business</p>
+						<p class="enlarge"><b>Bulk message sending for school!</b> also we are proving, we have some projects for schools and colleges aswell <b>especially on touch screens!</b> </p>
+						<h4 class="enlarge">Use if for:</h4>
+						<ul class="enlarge">
+							<li>Website designing</li>
+							<li>Web hosting</li>
+							<li>Domain registation</li>
+							<li>Bulk message sending</li>
+							<li>and much more...</li>
+						</ul>
+					</div>
+					<div class="preview-content presentation right">
+						<p class="enlarge"><b>We know how to create best website desining that are readyly available!</b> We will provide website with cheap and best cast 
+					</div>
+					<img src="04-05.jpg" class="bg-img" />
+					<img src="04-05.jpg" class="bg-img zoom-large"/>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Pages 6 & 7 Device Support -->
+		<div class="fb-page double">
+			<div class="page-content">
+				<div class="container">
+					<img src="06-07.jpg" class="bg-img"/>
+					<img src="06-07.jpg" class="bg-img zoom-large"/>	
+				</div>	
+			</div>
+		</div>
+		
+		<!-- Pages 8 & 9 Features -->
+		<div class="fb-page double">
+			<div class="page-content">
+				<div class="container">
+					<div class="preview-content features left">
+						<h3 class="enlarge">Android Application development</h3>
+					</div>
+					<div class="preview-content features right">
+						<h4 class="enlarge">Main features:</h4>
+						<ul class="enlarge">
+							<li>Android based application development</li>
+							<li>Android app for business purpose</li>
+							<li>GPS Based application </li>
+							<li>E Commerce based application on android</li>
+							<li>website as a application</li>
+						</ul>
+						
+						<h4 class="enlarge">Have a suggestion?</h4>
+						<a href="mailto:hr@siglyne.com"><img src="http://mpcthemes.net/flipbook/html/images/let-us-know.png" class="let-us-know enlarge"/></a>
+					</div>
+					<img src="08-09.jpg" class="bg-img" />
+					<img src="08-09.jpg" class="bg-img zoom-large"/>
+				</div>	
+			</div>
+		</div>
+		
+		<!-- Pages 10 & 11 Responsive Design -->
+		<div class="fb-page double">
+			<div class="page-content">
+				<div class="container">
+					<div class="preview-content responsive left">
+						<h3 class="enlarge">Great responsive design</h3>
+						<p class="enlarge">We pay attantion to details.</p>
+					</div>
+					<div class="preview-content responsive right">
+						<ul class="enlarge">
+							<li>Design that fits to every resolution</li>
+							<li>Elegant neutral icons</li>
+							<li>Background templates</li>
+							<li>Smooth transitions</li>
+							<li>Advanced shading</li>
+						</ul>
+					</div>
+					<img src="10-11.jpg" class="bg-img" />
+					<img src="10-11.jpg" class="bg-img zoom-large"/>
+				</div>
+				
+			</div>
+		</div>
+
+		<!-- Pages 12 & 13 Cofiguration -->
+		<div class="fb-page double">
+			<div class="page-content">
+				<div class="container">
+					<div class="preview-content configuration left">
+						<h3 class="enlarge">Pricing</h3>
+						<p class="enlarge">Please find the price we are offering for projects</p>
+						<h4 class="enlarge">Pricing:</h4>
+						
+						<table>
+						<tr><td><b>Description<b></td><td><b>Price / RS<b></td></tr>
+						<tr><td>Static Website basic content</td><td>3500</td></tr>
+						<tr><td>Static website</td><td>5000</td></tr>
+						<tr><td>Dynamic Website</td><td>12000</td></tr>
+						<tr><td>Android applications</td><td>6000 starts from </td></tr>
+						
+						
+						</table>
+						
+						<h4 class="enlarge">We Support</h4>
+						<p class="enlarge">If you have any problem with our product, please visit our <a href="http://siglyne.com/" target="_blank">support forums</a>.</p>
+					</div>
+					<img src="12-13.jpg" class="bg-img"/>
+					<img src="12-13.jpg" class="bg-img zoom-large"/>
+				</div>
+			</div>
+		</div>
+	
+		<!-- Pages 14 & 15 Video -->
+		<div class="fb-page double">
+			<div class="page-content">
+				<div class="container">
+					<div class="preview-content video left">
+						<h3 class="enlarge">IOT Projects </h3>
+						
+						<h4 class="enlarge" style="color:#902415;">We are providing all kind of IOT Projects:</h4>
+						
+						<ul class="enlarge">
+							<li>Embedded</li>
+							<li>Raspberry pi</li>
+							<li>OSGi</li>
+							<li>much more..</li>
+						</ul>
+					</div>
+					<div class="video-content preview-content right">
+						<div class="video" style="width: 74.9%; height: 29.2%; position:relative; padding-top:45.5%; left: -3.5%;">
+							<!-- Flash Video Player -->
+							<script type="text/javascript">
+								var flashvars = {};
+								flashvars.src = "http://mpcthemes.net/flipbook/html/pages/video/zanimotion.mp4";
+								flashvars.controlBarMode = "floating";
+								flashvars.poster = "http://mpcthemes.net/flipbook/html/pages/video.png";
+								
+								var params = {};
+								params.allowfullscreen = "true";
+								params.allowscriptaccess = "always";
+								
+								var attributes = {};
+								attributes.wmode = "transparent";
+								
+								swfobject.embedSWF("http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf", "videoDiv", "100%", "100%", "10.1.0", "http://mpcthemes.net/flipbook/html/expressInstall.swf", flashvars, params, attributes);
+							</script>
+					 		<!-- HTML5 Fallback -->
+							<div id="videoDiv">
+								<video controls="controls" poster="http://mpcthemes.net/flipbook/html/pages/video.png" width="100%" height="100%">
+									<source src="https://citrusbits.com/corporate/web-apps-development/" type="video/mp4"/>
+									<source src="http://mpcthemes.net/flipbook/html/pages/video/zanimotion.ogv" type="video/ogg"/>
+									Your browser does not support the video tag.
+								</video>
+							</div>
+						</div>
+					</div>
+					<img src="14-15.jpg" class="bg-img"/>
+					<img src="14-15.jpg" class="bg-img zoom-large"/>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Back Cover -->
+		<div class="fb-page">
+			<div class="page-content">
+				<div class="container">
+					<img src="back-cover.jpg" class="bg-img"/>
+					<img src="back-cover.jpg" class="bg-img zoom-large"/>
+				</div>
+			</div>
+		</div>
+		
+		<!-- end Flip Book Pages -->
+		
+	</div> <!-- end Flip Book -->
+	
+Back to <a href="http://www.siglyne.com/"><b>Siglyne.com</b></a>
+	<!-- Flip Book Navigation -->
+	<div id="fb-nav-1" class="fb-nav mobile stacked">
+		<ul>
+			<li class="toc left">Table Of Content</li>
+			<li class="zoom center">Zoom</li>
+			<li class="slideshow center">Slide Show</li>
+			<li class="show-all right">Show All Pages</li>
+		</ul>
+				
+			
+	</div> <!-- end FLip Book Nav -->
+</div> <!-- end Flip Book Container -->
+
+
+<div id="mpc-styles-switcher">
+	<!-- <img src="http://www.mpcreation.pl/themeforest/eco_incorporated2/wp-content/themes/incorporated/images/slider/04.jpg"/> -->
+	
+	<div id="ss-bookmark">
+		<div id="ss-bookmark-icon"></div>
+	</div>
+	
+	</div> <!-- end ss-content -->
+</div> <!-- end mpc-styles-switcher --></body>
+
+<!-- Mirrored from mpcthemes.net/flipbook/html/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Jan 2018 15:07:20 GMT -->
+</html>
